@@ -1,0 +1,299 @@
+\documentclass{article}
+\usepackage[top = 1.0in]{geometry}
+
+\usepackage{graphicx}
+
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{bm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{framed}
+\usepackage{xspace}
+\usepackage{amsmath}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\newcommand{\di}{{d}}
+\newcommand{\nexp}{{n}}
+\newcommand{\nf}{{p}}
+\newcommand{\vcd}{{\textbf{D}}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand\bb{\ensuremath{\mathbf{b}}}
+\newcommand\bs{\ensuremath{\mathbf{s}}}
+\newcommand\bp{\ensuremath{\mathbf{p}}}
+\newcommand{\relu} { \operatorname{ReLU} }
+\newcommand{\smx} { \operatorname{softmax} }
+\newcommand\bx{\ensuremath{\mathbf{x}}}
+\newcommand\bh{\ensuremath{\mathbf{h}}}
+\newcommand\bc{\ensuremath{\mathbf{c}}}
+\newcommand\bW{\ensuremath{\mathbf{W}}}
+\newcommand\by{\ensuremath{\mathbf{y}}}
+\newcommand\bo{\ensuremath{\mathbf{o}}}
+\newcommand\be{\ensuremath{\mathbf{e}}}
+\newcommand\ba{\ensuremath{\mathbf{a}}}
+\newcommand\bu{\ensuremath{\mathbf{u}}}
+\newcommand\bv{\ensuremath{\mathbf{v}}}
+\newcommand\bP{\ensuremath{\mathbf{P}}}
+\newcommand\bg{\ensuremath{\mathbf{g}}}
+\newcommand\bX{\ensuremath{\mathbf{X}}}
+% real numbers R symbol
+\newcommand{\Real}{\mathbb{R}}
+
+% encoder hidden
+\newcommand{\henc}{\bh^{\text{enc}}}
+\newcommand{\hencfw}[1]{\overrightarrow{\henc_{#1}}}
+\newcommand{\hencbw}[1]{\overleftarrow{\henc_{#1}}}
+
+% encoder cell
+\newcommand{\cenc}{\bc^{\text{enc}}}
+\newcommand{\cencfw}[1]{\overrightarrow{\cenc_{#1}}}
+\newcommand{\cencbw}[1]{\overleftarrow{\cenc_{#1}}}
+
+% decoder hidden
+\newcommand{\hdec}{\bh^{\text{dec}}}
+
+% decoder cell
+\newcommand{\cdec}{\bc^{\text{dec}}}
+
+\usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor = blue,
+  urlcolor  = blue,
+  citecolor = blue,
+  anchorcolor = blue,
+  pdfborderstyle={/S/U/W 1}
+}
+\usepackage{nccmath}
+\usepackage{mathtools}
+\usepackage{graphicx,caption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{epstopdf,subcaption}
+\usepackage{psfrag}
+\usepackage{amsmath,amssymb,epsf}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{color,soul}
+\usepackage{bbm}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{float}
+\definecolor{Code}{rgb}{0,0,0}
+\definecolor{Decorators}{rgb}{0.5,0.5,0.5}
+\definecolor{Numbers}{rgb}{0.5,0,0}
+\definecolor{MatchingBrackets}{rgb}{0.25,0.5,0.5}
+\definecolor{Keywords}{rgb}{0,0,1}
+\definecolor{self}{rgb}{0,0,0}
+\definecolor{Strings}{rgb}{0,0.63,0}
+\definecolor{Comments}{rgb}{0,0.63,1}
+\definecolor{Backquotes}{rgb}{0,0,0}
+\definecolor{Classname}{rgb}{0,0,0}
+\definecolor{FunctionName}{rgb}{0,0,0}
+\definecolor{Operators}{rgb}{0,0,0}
+\definecolor{Background}{rgb}{0.98,0.98,0.98}
+\lstdefinelanguage{Python}{
+    numbers=left,
+    numberstyle=\footnotesize,
+    numbersep=1em,
+    xleftmargin=1em,
+    framextopmargin=2em,
+    framexbottommargin=2em,
+    showspaces=false,
+    showtabs=false,
+    showstringspaces=false,
+    frame=l,
+    tabsize=4,
+    % Basic
+    basicstyle=\ttfamily\footnotesize\setstretch{1},
+    backgroundcolor=\color{Background},
+    % Comments
+    commentstyle=\color{Comments}\slshape,
+    % Strings
+    stringstyle=\color{Strings},
+    morecomment=[s][\color{Strings}]{"""}{"""},
+    morecomment=[s][\color{Strings}]{'''}{'''},
+    % keywords
+    morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or
+    ,print,break,continue,return,True,False,None,access,as,,del,except,exec
+    ,finally,global,import,lambda,pass,print,raise,try,assert},
+    keywordstyle={\color{Keywords}\bfseries},
+    % additional keywords
+    morekeywords={[2]@invariant},
+    keywordstyle={[2]\color{Decorators}\slshape},
+    emph={self},
+    emphstyle={\color{self}\slshape},
+%
+}
+\lstMakeShortInline|
+
+\pagestyle{empty} \addtolength{\textwidth}{1.0in}
+\addtolength{\textheight}{0.5in}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\newcommand{\ruleskip}{\bigskip\hrule\bigskip}
+\newcommand{\nodify}[1]{{\sc #1}}
+\newenvironment{answer}{\sf \begingroup\color{ForestGreen}}{\endgroup}%
+
+\setlist[itemize]{itemsep=2pt, topsep=0pt}
+\setlist[enumerate]{itemsep=6pt, topsep=0pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlist[enumerate]{parsep=4pt}
+\setlength{\unitlength}{1cm}
+
+\renewcommand{\Re}{{\mathbb R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\what}[1]{\widehat{#1}}
+
+\renewcommand{\comment}[1]{}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\half}{\frac{1}{2}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\def\KL{D_{KL}}
+\def\xsi{x^{(i)}}
+\def\ysi{y^{(i)}}
+\def\zsi{z^{(i)}}
+\def\E{\mathbb{E}}
+\def\calN{\mathcal{N}}
+\def\calD{\mathcal{D}}
+\def\slack{\url{http://xcs224n-scpd.slack.com/}}
+\def\zipscriptalt{\texttt{python zip\_submission.py}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+ 
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage{scrextend}
+
+\newcommand{\alns}[1] {
+	\begin{align*} #1 \end{align*}
+}
+
+\newcommand{\pd}[2] {
+ \frac{\partial #1}{\partial #2}
+}
+\renewcommand{\Re} { \mathbb{R} }
+\newcommand{\btx} { \mathbf{\tilde{x}} }
+\newcommand{\bth} { \mathbf{\tilde{h}} }
+\newcommand{\sigmoid} { \operatorname{\sigma} }
+\newcommand{\CE} { \operatorname{CE} }
+\newcommand{\byt} { \hat{\by} }
+\newcommand{\yt} { \hat{y} }
+
+\newcommand{\oft}[1]{^{(#1)}}
+\newcommand{\fone}{\ensuremath{F_1}}
+
+\newcommand{\ac}[1]{ {\color{red} \textbf{AC:} #1} }
+\newcommand{\ner}[1]{\textbf{\color{blue} #1}}
+
+\def\assignmentnum{2 }
+\def\assignmentname{Understanding and Implementing Word2Vec}
+\def\assignmenttitle{XCS224N Assignment \assignmentnum}
+\begin{document}
+\pagestyle{myheadings} \markboth{}{\assignmenttitle}
+
+
+\LARGE
+1.a
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_1a
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{flalign*}
+    J_{\text{naive-softmax}}(\boldsymbol{v}_c,o,\boldsymbol{U}) &= -\log(\hat{y}_o) \\
+    &= -\log\left(\frac{\exp(\boldsymbol{u}_o^T\boldsymbol{v}_c)}{\sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c)}\right) \\
+    &= -\left(\log(\exp(\boldsymbol{u}_o^T\boldsymbol{v}_c) - \log(\sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c))\right) \\
+    &= -\boldsymbol{u}_o^T\boldsymbol{v}_c +
+    \log(\sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c))
+  \end{flalign*}
+  Now, we take the gradient w.r.t. $v_c$.
+  \begin{flalign*}
+      \frac{\partial J}{\partial \boldsymbol{v_c}} &= \frac{\partial}{\partial \boldsymbol{v_c}} \left[ -\boldsymbol{u}_o^T\boldsymbol{v}_c +
+    \log(\sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c)) \right] \\
+    &= -\boldsymbol{u_o} + \frac{1}{\sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c)} \left[ \frac{\partial}{\partial \boldsymbol{v_c}} \sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c)\right] \\
+    &= -\boldsymbol{u_o} + \frac{1}{\sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c)} \left[ \sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c) \cdot \boldsymbol{u_w} \right]
+  \end{flalign*}
+  Here, we use the fact that $P(O=o \mid C=c)=\frac{\exp(\boldsymbol{u_o}^T\boldsymbol{v_c})}{\sum_{w \in \text{Vocab}}\exp(\boldsymbol{u_w}^T\boldsymbol{v_c})}$. We can think of $ \frac{1}{\sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v}_c)} \sum_{w \in \text{Vocab}} \exp(\boldsymbol{u}_w^T\boldsymbol{v_c})$ as summing over all the values of $\hat{y}_w$ for $w \in \text{Vocab}$. We substitute this result in the above equation to get the following:
+  \begin{flalign*}
+      \frac{\partial J}{\partial \boldsymbol{v_c}} &= -\boldsymbol{u_o} + \sum_{w \in \text{Vocab}} \hat{y}_w \cdot \boldsymbol{u_w} \\
+      &= -\boldsymbol{u_o} + \sum_{w=1}^V \hat{y}_w \cdot \boldsymbol{u_w}
+  \end{flalign*}
+  This is equivalent to equation 4.
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_1a
+\clearpage
+
+\LARGE
+1.b
+\normalsize
+
+% <SCPD_SUBMISSION_TAG>_1b
+\begin{answer}
+  % ### START CODE HERE ###
+  \begin{flalign*}
+      J_{\text{naive-softmax}}(\boldsymbol{v}_c,o,\boldsymbol{U}) &= -\boldsymbol{u}_o^T\boldsymbol{v}_c +
+    \log\left(\sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)\right)
+  \end{flalign*}
+  Let's consider the two cases when $w'=o$ and when $w' \neq o$. \\ \\
+  Case 1. $w'=o$
+  \begin{flalign*}
+      \frac{\partial J}{\partial \boldsymbol{u}_o} &= \frac{\partial}{\partial \boldsymbol{u}_o} \left[ -\boldsymbol{u}_o^T\boldsymbol{v}_c +
+    \log\left(\sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)\right)\right] \\
+    &= -\boldsymbol{v}_c + \frac{1}{\sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)} \left[ \frac{\partial}{\partial \boldsymbol{u}_o} \sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)\right] \\
+    &= -\boldsymbol{v}_c + \frac{1}{\sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)} (\exp(\boldsymbol{u}_o^T\boldsymbol{v}_c))\boldsymbol{v}_c \\
+    &\text{*Notice how only the term with } w'=o \text{ survives, since we're differentiating w.r.t. to } \boldsymbol{u}_o\ \\
+    &= (\hat{y}_o - 1) \boldsymbol{v}_c
+  \end{flalign*}
+  Case 2. $w' \neq o$
+  \begin{flalign*}
+      \frac{\partial J}{\partial \boldsymbol{u}_w} &= \frac{\partial}{\partial \boldsymbol{u}_w} \left[ -\boldsymbol{u}_o^T\boldsymbol{v}_c +
+    \log\left(\sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)\right)\right] \\
+    &= \frac{1}{\sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)} \left[ \frac{\partial}{\partial \boldsymbol{u}_w} \sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)\right] \\
+    &= \frac{1}{\sum_{w' \in \text{Vocab}} \exp(\boldsymbol{u}_{w'}^T\boldsymbol{v}_c)} (\exp(\boldsymbol{u}_w^T\boldsymbol{v}_c))\boldsymbol{v}_c \\
+    &\text{*Notice how only the term with } w'=w \text{ survives, since we're differentiating w.r.t. to } \boldsymbol{u}_w \\
+    &= \hat{y}_w \boldsymbol{v}_c
+  \end{flalign*}
+  Therefore, we get the following result:
+  \[ \frac{\partial J}{\partial \boldsymbol{u}_w} = \left\{ \begin{array}{ll}
+       (\hat{y}_w-1)\boldsymbol{v}_c & \text{if } w=o  \\
+       \hat{y}_w\boldsymbol{v}_c & \text{otherwise} 
+  \end{array} \right. \]
+  % ### END CODE HERE ###
+\end{answer}
+% <SCPD_SUBMISSION_TAG>_1b
+\clearpage
+
+% <SCPD_SUBMISSION_TAG>_entire_submission
+
+\end{document}
